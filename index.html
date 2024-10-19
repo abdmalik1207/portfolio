@@ -1,736 +1,630 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Abd Malik</title>
-  <link rel="icon" href="dist/img/muke gue.png" type="image" sizes="16x16">
-  <link rel="stylesheet" href="src/output.css">
-  <style>
-    /* Modal styles */
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgb(0, 0, 0);
-        background-color: rgba(0, 0, 0, 0.4);
-        padding-top: 60px;
-    }
+	<title>Abd Malik</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="css/flexslider.css">
+	<link rel="stylesheet" href="fonts/icomoon/style.css">
+	<link rel="icon" href="images/muke.png" type="image" sizes="16x16">
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/style.css">
 
-    .modal-content {
-        background-color: #fefefe;
-        margin: 5% auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 80%;
-        max-width: 700px;
-        text-align: center;
-    }
+	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700" rel="stylesheet">
 
-    .close {
-        color: #aaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-    }
+	<style>
+		.relative {
+			position: relative;
+		}
 
-    .close:hover,
-    .close:focus {
-        color: black;
-        text-decoration: none;
-        cursor: pointer;
-    }
+		.badge {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			color: white;
+			padding: 5px 10px;
+			font-size: 12px;
+			border-radius: 10px;
+			font-weight: bold;
+		}
+	</style>
 
-    /* Carousel styles */
-    .carousel {
-        display: flex;
-        align-items: center;
-    }
-
-    .carousel img {
-        display: none;
-        width: 100%;
-    }
-
-    .carousel img.active {
-        display: block;
-    }
-
-    .carousel-controls {
-        cursor: pointer;
-        font-size: 24px;
-        user-select: none;
-    }
-
-    .carousel-controls:hover {
-        color: #888;
-    }
-
-    /*
-    .relative {
-      position: relative;
-    }
-
-    .image-container {
-      position: relative;
-    }
-
-    img.transition-opacity {
-      transition: opacity 0.3s ease;
-    }
-
-    .overlay {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      background-color: rgba(0, 0, 0, 0.2);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .more-button {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: #73BBC9;
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 0.25rem;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-
-    .image-container:hover .more-button {
-      opacity: 1;
-    }
-
-    .image-container:hover img {
-      opacity: 0.2;
-    }
-
-    .cursor-pointer {
-      cursor: pointer;
-    }
-
-    .text-white {
-      color: white;
-    }
-
-    .bg-blue-500 {
-      background-color: #3b82f6;
-    }
-
-    .bg-blue-600 {
-      background-color: #2563eb;
-    }
-
-    .rounded {
-      border-radius: 0.25rem;
-    }
-    */
-
-  </style>
 </head>
-<body>
-  <!-- Header Start -->
-  <header class="absolute top-0 left-0 z-10 flex items-center w-full bg-transparent">
-    <div class="container">
-      <div class="relative flex items-center justify-between">
-        <div class="px-4">
-          <a href="#home" class="block py-6 text-lg font-bold text-danger">ABD MALIK</a>
-        </div>
-        <div class="flex items-center px-4">
-          <button id="hamburger" name="hamburger" type="button" class="absolute block right-4 lg:hidden">
-            <span class="transition duration-300 ease-in-out origin-top-left hamburger-line"></span>
-            <span class="transition duration-300 ease-in-out hamburger-line"></span>
-            <span class="transition duration-300 ease-in-out origin-bottom-left hamburger-line"></span>
-          </button>
 
-          <nav
-            id="nav-menu"
-            class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none"
-          >
-            <ul class="block lg:flex">
-              <li class="group">
-                <a href="#beranda" class="flex py-2 mx-8 text-base text-dark group-hover:text-danger">Home</a>
-              </li>
-              <li class="group">
-                <a href="#about" class="flex py-2 mx-8 text-base text-dark group-hover:text-danger">About Me</a>
-              </li>
-              <li class="group">
-                <a href="#portfolio" class="flex py-2 mx-8 text-base text-dark group-hover:text-danger">Portfolio</a>
-              </li>
-              <li class="group">
-                <a href="#clients" class="flex py-2 mx-8 text-base text-dark group-hover:text-danger">Clients</a>
-              </li>
-              <!-- <li class="group">
-                <a href="#blog" class="flex py-2 mx-8 text-base text-dark group-hover:text-danger">Blog</a>
-              </li> -->
-              <li class="group">
-                <a href="#contact" class="flex py-2 mx-8 text-base text-dark group-hover:text-danger">Contact</a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-    </div>
-  </header>
-  <!-- Header End -->
+<body data-spy="scroll" data-target="#pb-navbar" data-offset="200">
 
-  <!-- Hero Section Start -->
-  <section id="home" class="pt-36">
-    <div class="container">
-      <div class="flex flex-wrap">
-        <div class="self-center w-full px-4 lg:w-1/2">
-          <h1 class="text-base font-semibold md:text-xl">
-              <span id="intro" class="block mt-1 text-4xl font-bold text-dark lg:text-5xl"></span>
-          </h1>
-          <h2 id="job" class="mt-5 mb-10 text-lg font-medium lg:text-2xl"></h2>
-          <a href="#contact" class="px-8 py-3 text-base font-semibold text-white transition duration-300 ease-in-out rounded-full bg-danger hover:shadow-lg hover:opacity-80">Get In Contact</a>
-      </div>
-        <div class="self-end w-full px-4 lg:w-1/2">
-          <div class="relative mt-10 lg:mt-0 lg:right-0">
-            <img src="dist/img/james.png" alt="Malix" class="max-w-full mx-auto" width="350">
-            <span class="absolute -translate-x-1/2 -bottom-0 -z-10 left-1/2 md:scale-125">
-              <svg width="400" height="400" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="">
-                <path fill="#73BBC9" d="M38.1,-39.9C47.3,-28.8,51.4,-14.4,55.9,4.5C60.3,23.4,65.2,46.7,56,55.3C46.7,63.8,23.4,57.6,1.9,55.7C-19.5,53.7,-38.9,56.1,-51.8,47.5C-64.8,38.9,-71.1,19.5,-67,4.1C-62.9,-11.2,-48.3,-22.5,-35.4,-33.6C-22.5,-44.7,-11.2,-55.6,1.6,-57.2C14.4,-58.8,28.8,-51,38.1,-39.9Z" transform="translate(100 100)" />
-              </svg>
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- Hero Section End -->
+	<nav class="navbar navbar-expand-lg site-navbar navbar-light bg-light" id="pb-navbar">
+		<div class="container">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample09">
+				<ul class="navbar-nav">
+					<li class="nav-item"><a class="nav-link" href="#section-home">Home</a></li>
+					<li class="nav-item"><a class="nav-link" href="#section-portfolio">Portofolio</a></li>
+					<li class="nav-item"><a class="nav-link" href="#section-about">About Me</a></li>
+					<li class="nav-item"><a class="nav-link" href="#section-clients">Clients</a></li>
+					<li class="nav-item"><a class="nav-link" href="#section-contact">Contact</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 
-  <!-- About Section Start -->
-  <section id="about" class="pb-32 pt-36">
-    <div class="container">
-      <div class="flex flex-wrap">
-        <div class="w-full px-4 mb-10 lg:w-1/2">
-          <h3 class="mb-3 text-lg font-bold uppercase text-danger">About Me</h3>
-          <h2 class="max-w-md mb-5 text-3xl font-bold text-dark lg:text-4xl">Hey, I'm Abd Malik</h2>
-          <p class="max-w-xl text-base font-medium text-secondary lg:text-lg">"I am an alumnus of Pondok Informatika, where I specialized in web development and graphic design, with a stronger emphasis on web development. Presently, I am pursuing a degree in Informatics at Universitas Siber Muhammadiyah. I possess experience in developing multiple websites and one application during my tenure as a freelancer at PT Mahir Techno Indonesia."</p>
-        </div>
-        <div class="w-full px-4 lg:w-1/2">
-          <h3 class="mb-4 text-2xl font-semibold text-dark lg:text-3xl lg:pt-10">Let's Connect</h3>
-            <p class="mb-6 text-base font-medium text-secondary lg:text-lg">I'm always excited to meet new people and explore opportunities for collaboration. Whether you have a project in mind, or just want to chat, don't hesitate to reach out!</p>
-          <div class="flex items-center">
-            <!-- Youtube -->
-            <!-- <a href="https://youtube.com/" target="_blank" class="flex items-center justify-center mr-3 border rounded-full w-9 h-9 border-slate-300 text-slate-300 hover:border-danger hover:bg-danger hover:text-white">
-              <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="20" class="fill-current">
-                <title>YouTube</title>
-                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-            </a> -->
-            <!-- Instagram -->
-            <a href="https://instagram.com/abdmalik1207" target="_blank" class="flex items-center justify-center mr-3 border rounded-full w-9 h-9 border-slate-300 text-slate-300 hover:border-danger hover:bg-danger hover:text-white">
-              <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="20" class="fill-current">
-                <title>Instagram</title>
-                <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/>
-              </svg>
-            </a>
-            <!-- Twitter -->
-            <!-- <a href="https://twitter.com/" target="_blank" class="flex items-center justify-center mr-3 border rounded-full w-9 h-9 border-slate-300 text-slate-300 hover:border-danger hover:bg-danger hover:text-white">
-              <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="20" class="fill-current"><title>Twitter</title><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
-            </a> -->
-            <!-- Tiktok -->
-            <!-- <a href="https://tiktok.com/" target="_blank" class="flex items-center justify-center mr-3 border rounded-full w-9 h-9 border-slate-300 text-slate-300 hover:border-danger hover:bg-danger hover:text-white">
-              <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="20" class="fill-current"><title>TikTok</title><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
-            </a> -->
-            <!-- Facebook -->
-            <a href="https://facebook.com/abdmalik1207" target="_blank" class="flex items-center justify-center mr-3 border rounded-full w-9 h-9 border-slate-300 text-slate-300 hover:border-danger hover:bg-danger hover:text-white">
-              <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="20" class="fill-current"><title>Facebook</title><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-            </a>
-            <!-- Whatsapp -->
-            <a href="https://wa.me/+6281343032487" target="_blank" class="flex items-center justify-center mr-3 border rounded-full w-9 h-9 border-slate-300 text-slate-300 hover:border-danger hover:bg-danger hover:text-white">
-              <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="20" class="fill-current"><title>WhatsApp</title><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-            </a>
-            <!-- Linkedin -->
-            <a href="https://linkedin.com/in/abd-malik-291a56243/" target="_blank" class="flex items-center justify-center mr-3 border rounded-full w-9 h-9 border-slate-300 text-slate-300 hover:border-danger hover:bg-danger hover:text-white">
-              <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="20" class="fill-current"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- About Section End -->
+	<section class="site-hero" style="background-image: url(images/image_1.jpg);" id="section-home" data-stellar-background-ratio="0.5">
+		<div class="container">
+			<div class="row intro-text align-items-center justify-content-center mt-5">
+				<div class="col-md-10 text-center pt-5">
+					<h1 class="site-heading site-animate">Hello, I'm <strong class="d-block">Abdul Malik</strong></h1>
+					<strong class="d-block text-white text-uppercase letter-spacing">and this is My Rezume</strong>
+				</div>
+			</div>
+		</div>
+	</section> <!-- section -->
 
-  <!-- Portfolio Section Start -->
-  <section id="portfolio" class="pb-16 pt-36 bg-slate-100">
-    <div class="container">
-      <div class="w-full px-4">
-        <div class="max-w-xl mx-auto mb-16 text-center">
-          <h4 class="mb-2 text-lg font-semibold text-danger">Portfolio</h4>
-          <h2 class="mb-4 text-3xl font-bold text-dark sm:text-4xl lg:text-5xl">My Projects</h2>
-          <p class="font-medium text-md text-secondary md:text-lg">
-            I have experience in developing several websites and one application.
-          </p>
-        </div>
-      </div>
+	<section class="site-section" id="section-portfolio">
+		<div class="container">
+			<div class="row">
+				<div class="section-heading text-center col-md-12">
+					<h2>Featured <strong>Portfolio</strong></h2>
+				</div>
+			</div>
+			<div class="filters">
+				<ul>
+					<li class="active" data-filter="*">All</li>
+					<li data-filter=".web">Web Apps</li>
+					<li data-filter=".mobile">Mobile Apps</li>
+					<li data-filter=".design">Design</li>
+					<!-- <li data-filter=".photography">Photography</li> -->
+				</ul>
+			</div>
 
-      <div class="grid w-full gap-4 md:grid-cols-2 xl:w-10/12 xl:mx-auto">
-        <div class="relative h-full p-4 overflow-hidden rounded shadow-lg bg-slate-100">
-          <div class="image-container">
-            <img class="w-full transition-opacity duration-300" src="dist/img/portfolio/1.png" alt="Sunset in the mountains">
-            <div class="overlay"></div>
-            <!-- <button class="more-button" id="openModal">View More</button> -->
-          </div>
-          <h3 class="mt-5 mb-3 text-xl font-semibold text-dark">Cat Tracking App</h3>
-          <ul class="mb-5">
-            <li>&#x2022; Project Description : Cat tracking app is an application for tracking vehicles that are in the installment process.</li>
-            <li>&#x2022; App Type : Mobile App</li>
-            <li>&#x2022; Role : Quality Assurance</li>
-          </ul>
-          <a href="https://cats-pt-adira-dinamika-multi-finance.id.aptoide.com/app" target="_blank" >
-            <button class="flex px-4 py-2 font-semibold bg-transparent border rounded text-danger border-danger hover:bg-danger hover:text-white hover:border-transparent">
-              View More &nbsp;
-              <svg xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-              </svg>
-            </button>
-          </a>
-        </div>
-        <div class="relative h-full p-4 overflow-hidden rounded shadow-lg bg-slate-100">
-          <div class="image-container">
-            <img class="w-full transition-opacity duration-300" src="dist/img/portfolio/2.jpg" alt="Sunset in the mountains">
-            <div class="overlay"></div>
-            <!-- <button class="more-button" id="openModal">View More</button> -->
-          </div>
-          <h3 class="mt-5 mb-3 text-xl font-semibold text-dark">Monita(Monitoring Investasi Pertagas)</h3>
-          <ul class="mb-5">
-            <li>&#x2022; Project Description: Monita (Monitoring Investasi Pertagas) is an application designed to assist users monitoring investments according to the project's name, from project initiation to project completion. The involves several roles: superadmin, coordinator, and executor.</li>
-            <li>&#x2022; App Type: Web App</li>
-            <li>&#x2022; Role: Developer</li>
-          </ul>
-          <a style="text-decoration: underline; color: #76abae" target="_blank">Non-Public Web</a>
-        </div>
-        <div class="relative h-full p-4 overflow-hidden rounded shadow-lg bg-slate-100">
-          <div class="image-container">
-            <img class="w-full transition-opacity duration-300" src="dist/img/portfolio/3.jpg" alt="Landing Page">
-            <div class="overlay"></div>
-            <!-- <button class="more-button">View More</button> -->
-          </div>
-          <h3 class="mt-5 mb-3 text-xl font-semibold text-dark">Hakka Indonesia(LMS)</h3>
-          <ul class="mb-5">
-            <li>&#x2022; Project Description: Hakka Indonesia (LMS) is a web-based software program for the management, documentation, monitoring, reporting, administration, and of educational content, training programs, instructional videos, and learning and development projects integrated with the Prakerja API.</li>
-            <li>&#x2022; App Type: Web App</li>
-            <li>&#x2022; Role: Developer</li>
-          </ul>
-          <a href="https://lms.hakkaindonesia.co.id" target="_blank" >
-            <button class="flex px-4 py-2 font-semibold bg-transparent border rounded text-danger border-danger hover:bg-danger hover:text-white hover:border-transparent">
-              View More &nbsp;
-              <svg xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-              </svg>
-            </button>
-          </a>
-        </div>
-        <div class="relative h-full p-4 overflow-hidden rounded shadow-lg bg-slate-100">
-          <div class="image-container">
-            <img class="w-full transition-opacity duration-300" src="dist/img/portfolio/4.jpg" alt="Landing Page">
-            <div class="overlay"></div>
-            <!-- <button class="more-button">View More</button> -->
-          </div>
-          <h3 class="mt-5 mb-3 text-xl font-semibold text-dark">Finval(Finance Valuation)</h3>
-          <ul class="mb-5">
-            <li>&#x2022; Project Description: Finval is a very simple web-based application for evaluating the financials of a startup based on different indicators.</li>
-            <li>&#x2022; App Type: Web App</li>
-            <li>&#x2022; Role: Developer</li>
-          </ul>
-          <a href="https://finval-id.com/" target="_blank" >
-            <button class="flex px-4 py-2 font-semibold bg-transparent border rounded text-danger border-danger hover:bg-danger hover:text-white hover:border-transparent">
-              View More &nbsp;
-              <svg xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-              </svg>
-            </button>
-          </a>
-        </div>
-        <div class="relative h-full p-4 overflow-hidden rounded shadow-lg bg-slate-100">
-          <div class="image-container">
-            <img class="w-full transition-opacity duration-300" src="dist/img/portfolio/5.jpg" alt="Landing Page">
-            <div class="overlay"></div>
-            <!-- <button class="more-button">View More</button> -->
-          </div>
-          <h3 class="mt-5 mb-3 text-xl font-semibold text-dark">Zi Bumil</h3>
-          <ul class="mb-5">
-            <li>&#x2022; Project Description: Zi Bumil is an application designed to assist pregnant women in checking their health and providing appropriate nutritional advice.</li>
-            <li>&#x2022; App Type: Mobile App</li>
-            <li>&#x2022; Role: Developer</li>
-          </ul>
-          <a href="https://play.google.com/store/apps/details?id=com.mahir.zi_bumil&pcampaignid=web_share" target="_blank" >
-            <button class="flex px-4 py-2 font-semibold bg-transparent border rounded text-danger border-danger hover:bg-danger hover:text-white hover:border-transparent">
-              View More &nbsp;
-              <svg xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-              </svg>
-            </button>
-          </a>
-        </div>
-        <div class="relative h-full p-4 overflow-hidden rounded shadow-lg bg-slate-100">
-          <div class="image-container">
-            <img class="w-full transition-opacity duration-300" src="dist/img/portfolio/6.jpg" alt="Landing Page">
-            <div class="overlay"></div>
-            <!-- <button class="more-button">View More</button> -->
-          </div>
-          <h3 class="mt-5 mb-3 text-xl font-semibold text-dark">HASDEMY</h3>
-          <ul class="mb-5">
-            <li>&#x2022; Project Description: Halal Syariah Academy (Hasdemy) is a Learning Management System (LMS) platform where prospective employees can learn to develop their competencies to be ready to enter the workforce as professionals. Hasdemy has a quality standard management system and training materials based on the Indonesian National Competency Standards (SKKNI), supported by certified expert instructors.</li>
-            <li>&#x2022; App Type: Web App</li>
-            <li>&#x2022; Role: Developer</li>
-          </ul>
-          <a href="https://lms.hasdemy.com" target="_blank" >
-            <button class="flex px-4 py-2 font-semibold bg-transparent border rounded text-danger border-danger hover:bg-danger hover:text-white hover:border-transparent">
-              View More &nbsp;
-              <svg xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-              </svg>
-            </button>
-          </a>
-        </div>
-        <div class="relative h-full p-4 overflow-hidden rounded shadow-lg bg-slate-100">
-          <div class="image-container">
-            <img class="w-full transition-opacity duration-300" src="dist/img/portfolio/7.png" alt="Landing Page">
-            <div class="overlay"></div>
-            <!-- <button class="more-button">View More</button> -->
-          </div>
-          <h3 class="mt-5 mb-3 text-xl font-semibold text-dark">SI-PALING (Sistem Laporan Pengelolaan Lingkungan)</h3>
-          <ul class="mb-5">
-            <li>&#x2022; Project Description: Sipaling is a system for reporting the results of environmental management evaluations for the Bintang II Industrial Estate in Batam. It is implemented for every business and/or activity that is required to have an Environmental Permit/Technical Approval and a Permit for Environmental Protection and Management/Technical Approval for wastewater disposal and/or utilization, as well as Technical Details for Hazardous and Toxic Waste (B3) Management.</li>
-            <li>&#x2022; App Type: Web App</li>
-            <li>&#x2022; Role: Developer</li>
-          </ul>
-          <a href="https://sipalingtaathkm.com" target="_blank" >
-            <button class="flex px-4 py-2 font-semibold bg-transparent border rounded text-danger border-danger hover:bg-danger hover:text-white hover:border-transparent">
-              View More &nbsp;
-              <svg xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-              </svg>
-            </button>
-          </a>
-        </div>
-      </div>
+			<div class="filters-content">
+				<div class="row grid">
+					<div class="single-portfolio col-sm-4 all web">
+						<div class="relative">
+							<div class="thumb">
+								<div class="overlay overlay-bg"></div>
+								<img class="image img-fluid" src="images/p1.jpg" alt="">
+								<span class="badge bg-success">Real Project</span>
+							</div>
+							<a href="images/p1.jpg" class="img-pop-up">
+								<div class="middle">
+									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
+								</div>
+							</a>
+						</div>
+						<div class="p-inner" style="text-align: justify;">
+							<h4>Monita(Monitoring Investasi Pertagas)</h4>
+							<div class="cat">
+								• Project Description: Monita (Monitoring Investasi Pertagas) is an application designed to assist users monitoring investments according to the project's name, from project initiation to project completion. The involves several roles: superadmin, coordinator, and executor.
+								<br>
+								• App Type: Web App
+								<br>
+								• Role: Developer
+								<br>
+								<button class="btn btn-secondary mt-2">Non Public Web</button>
+							</div>
+						</div>
+					</div>
+					<div class="single-portfolio col-sm-4 all web">
+						<div class="relative">
+							<div class="thumb">
+								<div class="overlay overlay-bg"></div>
+								<img class="image img-fluid" src="images/p2.jpg" alt="">
+								<span class="badge bg-success">Real Project</span>
+							</div>
+							<a href="images/p2.jpg" class="img-pop-up">
+								<div class="middle">
+									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
+								</div>
+							</a>
+						</div>
+						<div class="p-inner" style="text-align: justify;">
+							<h4>Hakka Indonesia(LMS)</h4>
+							<div class="cat">
+								• Project Description: Hakka Indonesia (LMS) is a web-based software program for the management, documentation, monitoring, reporting, administration, and of educational content, training programs, instructional videos, and learning and development projects integrated with the Prakerja API.
+								<br>
+								• App Type: Web App
+								<br>
+								• Role: Developer
+								<br>
+								<a href="https://lms.hakkaindonesia.co.id/" target="_blank" class="btn btn-secondary mt-2">See More</a>
+							</div>
+						</div>
+					</div>
+					<div class="single-portfolio col-sm-4 all web">
+						<div class="relative">
+							<div class="thumb">
+								<div class="overlay overlay-bg"></div>
+								<img class="image img-fluid" src="images/p3.jpg" alt="">
+								<span class="badge bg-success">Real Project</span>
+							</div>
+							<a href="images/p3.jpg" class="img-pop-up">
+								<div class="middle">
+									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
+								</div>
+							</a>
+						</div>
+						<div class="p-inner" style="text-align: justify;">
+							<h4>Finval(Finance Valuation)</h4>
+							<div class="cat">
+								• Project Description: Finval is a very simple web-based application for evaluating the financials of a startup based on different indicators.
+								<br>
+								• App Type: Web App
+								<br>
+								• Role: Developer
+								<br>
+								<a href="https://finval-id.com/" target="_blank" class="btn btn-secondary mt-2">See More</a>
+							</div>
+						</div>
+					</div>
+					<div class="single-portfolio col-sm-4 all mobile">
+						<div class="relative">
+							<div class="thumb">
+								<div class="overlay overlay-bg"></div>
+								<img class="image img-fluid" src="images/p4.jpg" alt="">
+								<span class="badge bg-success">Real Project</span>
+							</div>
+							<a href="images/p4.jpg" class="img-pop-up">
+								<div class="middle">
+									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
+								</div>
+							</a>
+						</div>
+						<div class="p-inner" style="text-align: justify;">
+							<h4>Zi Bumil</h4>
+							<div class="cat">
+								• Project Description: Zi Bumil is an application designed to assist pregnant women in checking their health and providing appropriate nutritional advice.
+								<br>
+								• App Type: Mobile App
+								<br>
+								• Role: Developer
+								<br>
+								<a href="https://play.google.com/store/apps/details?id=com.mahir.zi_bumil&pcampaignid=web_share" target="_blank" class="btn btn-secondary mt-2">See More</a>
+							</div>
+						</div>
+					</div>
+					<div class="single-portfolio col-sm-4 all web">
+						<div class="relative">
+							<div class="thumb">
+								<div class="overlay overlay-bg"></div>
+								<img class="image img-fluid" src="images/p5.jpg" alt="">
+								<span class="badge bg-success">Real Project</span>
+							</div>
+							<a href="images/p5.jpg" class="img-pop-up">
+								<div class="middle">
+									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
+								</div>
+							</a>
+						</div>
+						<div class="p-inner" style="text-align: justify;">
+							<h4>HASDEMY</h4>
+							<div class="cat">
+								• Project Description: Halal Syariah Academy (Hasdemy) is a Learning Management System (LMS) platform where prospective employees can learn to develop their competencies to be ready to enter the workforce as professionals. Hasdemy has a quality standard management system and training materials based on the Indonesian National Competency Standards (SKKNI), supported by certified expert instructors.
+								<br>
+								• App Type: Web App
+								<br>
+								• Role: Developer
+								<br>
+								<a href="https://lms.hasdemy.com/" target="_blank" class="btn btn-secondary mt-2">See More</a>
+							</div>
+						</div>
+					</div>
+					<div class="single-portfolio col-sm-4 all web">
+						<div class="relative">
+							<div class="thumb">
+								<div class="overlay overlay-bg"></div>
+								<img class="image img-fluid" src="images/p6.jpg" alt="">
+								<span class="badge bg-success">Real Project</span>
+							</div>
+							<a href="images/p6.jpg" class="img-pop-up">
+								<div class="middle">
+									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
+								</div>
+							</a>
+						</div>
+						<div class="p-inner" >
+							<h4 class="text-left">SI-PALING (Sistem Laporan Pengelolaan Lingkungan)</h4>
+							<div class="cat" style="text-align: justify;">
+								• Project Description: Sipaling is a system for reporting the results of environmental management evaluations for the Bintang II Industrial Estate in Batam. It is implemented for every business and/or activity that is required to have an Environmental Permit/Technical Approval and a Permit for Environmental Protection and Management/Technical Approval for wastewater disposal and/or utilization, as well as Technical Details for Hazardous and Toxic Waste (B3) Management.
+								<br>
+								• App Type: Web App
+								<br>
+								• Role: Developer
+								<br>
+								<a href="https://sipalingtaathkm.com/login" target="_blank" class="btn btn-secondary mt-2">See More</a>
+							</div>
+						</div>
+					</div>
+					<div class="single-portfolio col-sm-4 all design">
+						<div class="relative">
+							<div class="thumb">
+								<div class="overlay overlay-bg"></div>
+								<img class="image img-fluid" src="images/p7.jpg" alt="">
+								<span class="badge bg-danger">Dummy Project</span>
+							</div>
+							<a href="images/p7.jpg" class="img-pop-up">
+								<div class="middle">
+									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
+								</div>
+							</a>
+						</div>
+						<div class="p-inner" >
+							<h4 class="text-left">PONDOK MESIN</h4>
+							<div class="cat" style="text-align: justify;">
+								• Project Description: Pondok Mesin is a factory specializing in the manufacturing of food processing machines. The project includes designing a logo, banner, T-shirt mockups, and various other designs.
+								<br>
+								<a href="https://drive.google.com/drive/folders/1pmEBf-gqJaOwjT9k3ZXyAZDjyVYvimEs?usp=sharing" target="_blank" class="btn btn-secondary mt-2">See More</a>
+							</div>
+						</div>
+					</div>
+					<div class="single-portfolio col-sm-4 all design">
+						<div class="relative">
+							<div class="thumb">
+								<div class="overlay overlay-bg"></div>
+								<img class="image img-fluid" src="images/p8.jpeg" alt="">
+								<span class="badge bg-success">Real Project</span>
+							</div>
+							<a href="images/p8.jpeg" class="img-pop-up">
+								<div class="middle">
+									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
+								</div>
+							</a>
+						</div>
+						<div class="p-inner" >
+							<h4 class="text-left">SA AQUATIC</h4>
+							<div class="cat" style="text-align: justify;">
+								• SA Aquatic is a shop that specializes in selling aquascapes, fish, aquatic plants, custom aquarium setups, aquarium maintenance consultations, and more. The project includes designing a logo, Card Name, T-shirt mockups, and various other designs.
+								<br>
+								<a href="https://drive.google.com/drive/folders/1p-7RfeQcMa-1K1ZmYoAm7EkJbGHZPHrT?usp=sharing" target="_blank" class="btn btn-secondary mt-2">See More</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- .section -->
 
-      <!-- Pop-up Slider Modal -->
-      <div id="sliderModal" class="fixed inset-0 flex items-center justify-center hidden bg-black bg-opacity-50">
-          <div class="relative w-full p-6 mx-4 bg-white rounded-lg md:w-1/2">
-              <!-- Close Button with Border and Background -->
-              <button id="closeModal" class="absolute top-1 right-1 hover:text-gray-700">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                  </svg>
-              </button>
+	<!-- <section class="site-section " id="section-resume">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 mb-5">
+					<div class="section-heading text-center">
+						<h2>My <strong>Resume</strong></h2>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<h2 class="mb-5">Education</h2>
+					<div class="resume-item mb-4">
+						<span class="date"><span class="icon-calendar"></span> March 2013 - Present</span>
+						<h3>Masteral in Information Technology</h3>
+						<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+						<span class="school">New York University</span>
+					</div>
 
-              <!-- Slider Content -->
-              <div class="slider">
-                  <div class="flex items-center justify-center h-64 bg-red-300 rounded-lg slide">Slide 1</div>
-                  <div class="flex items-center justify-center hidden h-64 bg-green-300 rounded-lg slide">Slide 2</div>
-                  <div class="flex items-center justify-center hidden h-64 bg-blue-300 rounded-lg slide">Slide 3</div>
-              </div>
+					<div class="resume-item mb-4">
+						<span class="date"><span class="icon-calendar"></span> March 2013 - Present Deacember.</span>
+						<h3>Masteral in Information Technology</h3>
+						<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+						<span class="school">New York University</span>
+					</div>
 
-              <!-- Slider Navigation -->
-              <div class="flex justify-between mt-4">
-                  <button id="prevSlide" class="px-4 py-1 text-base text-white transition duration-300 ease-in-out rounded-lg bg-danger hover:shadow-lg hover:opacity-80">Previous</button>
-                  <button id="nextSlide" class="px-4 py-1 text-base text-white transition duration-300 ease-in-out rounded-lg bg-danger hover:shadow-lg hover:opacity-80">Next</button>
-              </div>
-          </div>
-      </div>
+					<div class="resume-item mb-4">
+						<span class="date"><span class="icon-calendar"></span> March 2013 - Present</span>
+						<h3>Masteral in Information Technology</h3>
+						<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+						<span class="school">New York University</span>
+					</div>
 
-    </div>
-  </section>
-  <!-- Portfolio Section End -->
+					<div class="resume-item mb-4">
+						<span class="date"><span class="icon-calendar"></span> March 2013 - Present Deacember.</span>
+						<h3>Masteral in Information Technology</h3>
+						<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+						<span class="school">New York University</span>
+					</div>
 
-  <!-- Clients Section Start -->
-  <section id="clients" class="pb-32 pt-36 bg-slate-700">
-    <div class="container">
-      <div class="w-full px-4">
-      <div class="w-full px-4">
-          <div class="mx-auto mb-12 text-center">
-              <h4 class="mb-2 text-lg font-semibold text-danger">Clients</h4>
-              <h2 class="mb-4 text-3xl font-bold text-white sm:text-4xl lg:text-5xl">Who Have Collaborated</h2>
-              <p class="font-medium text-md text-secondary md:text-lg">
-                  We have had the pleasure of working with a variety of esteemed clients. Our collaborations have resulted in successful projects that showcase our commitment.
-              </p>
-          </div>
-      </div>
-      <div class="grid gap-0 md:grid-cols-3 lg:grid-cols-6 justify-items-center">
-        <div class="flex items-center justify-center my-6 max-w-[120px]">
-          <img src="dist/img/clients/1.png" alt="">
-        </div>
-        <div class="flex items-center justify-center my-6 max-w-[120px]">
-          <img src="dist/img/clients/2.png" alt="">
-        </div>
-        <div class="max-w-[120px] flex items-center justify-center my-6">
-          <img src="dist/img/clients/3.png" alt="">
-        </div>
-        <div class="max-w-[70px] flex items-center justify-center my-6">
-          <img src="dist/img/clients/4.png" alt="">
-        </div>
-        <div class="max-w-[65px] flex items-center justify-center my-6">
-          <img src="dist/img/clients/5.png" alt="">
-        </div>
-        <div class="max-w-[120px] flex items-center justify-center my-6">
-          <img src="dist/img/clients/6.png" alt="">
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- Clients Section End -->
+				</div>
+				<div class="col-md-6">
 
-  <!-- Blog Section Start -->
-  <!-- <section id="blog" class="pb-32 pt-36 bg-slate-100">
-    <div class="container">
-      <div class="w-full px-4">
-        <div class="max-w-xl mx-auto mb-16 text-center">
-          <h4 class="mb-2 text-lg font-semibold text-danger">Blog</h4>
-          <h2 class="mb-4 text-3xl font-bold text-dark sm:text-4xl lg:text-5xl">Tulisan Terkini</h2>
-          <p class="font-medium text-md text-secondary md:text-lg">
-           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum reprehenderit soluta placeat pariatur numquam.
-          </p>
-        </div>
-      </div>
-      <div class="flex flex-wrap">
-        <div class="w-full px-4 lg:w-1/2 xl:w-1/3">
-          <div class="mb-10 overflow-hidden bg-white shadow-lg rounded-xl">
-            <img src="https://source.unsplash.com/360x200?mechanical+keyboard" alt="Mechanical Keyboard" class="w-full">
-            <div class="px-6 py-8">
-              <h3>
-                <a href="#" class="block mb-3 text-xl font-semibold truncate text-dark hover:text-danger">Mechanical Keyboard</a>
-              </h3>
-              <p class="mb-6 text-base font-medium text-secondary">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad blanditiis modi culpa?
-              </p>
-              <a href="#" class="px-4 py-2 text-sm font-medium text-white rounded-lg bg-danger hover:opacity-80">Baca Selengkapnya</a>
-            </div>
-          </div>
-        </div>
-        <div class="w-full px-4 lg:w-1/2 xl:w-1/3">
-          <div class="mb-10 overflow-hidden bg-white shadow-lg rounded-xl">
-            <img src="https://source.unsplash.com/360x200?coffee" alt="Coffee" class="w-full">
-            <div class="px-6 py-8">
-              <h3>
-                <a href="#" class="block mb-3 text-xl font-semibold truncate text-dark hover:text-danger">Menikmati Kopi</a>
-              </h3>
-              <p class="mb-6 text-base font-medium text-secondary">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad blanditiis modi culpa?
-              </p>
-              <a href="#" class="px-4 py-2 text-sm font-medium text-white rounded-lg bg-danger hover:opacity-80">Baca Selengkapnya</a>
-            </div>
-          </div>
-        </div>
-        <div class="w-full px-4 lg:w-1/2 xl:w-1/3">
-          <div class="mb-10 overflow-hidden bg-white shadow-lg rounded-xl">
-            <img src="https://source.unsplash.com/360x200?programming" alt="Programming" class="w-full">
-            <div class="px-6 py-8">
-              <h3>
-                <a href="#" class="block mb-3 text-xl font-semibold truncate text-dark hover:text-danger">Tips Belajar Programming</a>
-              </h3>
-              <p class="mb-6 text-base font-medium text-secondary">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad blanditiis modi culpa?
-              </p>
-              <a href="#" class="px-4 py-2 text-sm font-medium text-white rounded-lg bg-danger hover:opacity-80">Baca Selengkapnya</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> -->
-  <!-- Blog Section End -->
 
-  <!-- Contact Section Start -->
-  <section id="contact" class="pb-32 pt-36">
-    <div class="container">
-      <div class="w-full px-4">
-        <div class="max-w-xl mx-auto mb-16 text-center">
-          <h4 class="mb-2 text-lg font-semibold text-danger">Contact</h4>
-          <h2 class="mb-4 text-3xl font-bold text-dark sm:text-4xl lg:text-5xl">Get In Contact</h2>
-          <p class="font-medium text-md text-secondary md:text-lg">
-            If you have any questions or need further information, feel free to reach out to us. We're here to help!
-          </p>
-        </div>
-      </div>
-      <div class="grid w-full md:grid-cols-2 lg:grid-cols-3">
-        <div class="flex items-center justify-center p-4 mb-12">
-          <a href="mailto:abdmalik1207@gmail.com" target="_blank" class="flex items-center justify-center mr-3 border rounded-full w-9 h-9 border-slate-700 text-slate-700 hover:border-danger hover:bg-danger hover:text-white">
-              <svg width="20" class="fill-current" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Gmail</title><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
-          </a>
-          <span>abdmalik1207@gmail.com</span>
-        </div>
-        <div class="flex items-center justify-center p-4 mb-12">
-          <a href="https://wa.me/+6281343032487" target="_blank" class="flex items-center justify-center mr-3 border rounded-full w-9 h-9 border-slate-700 text-slate-700 hover:border-danger hover:bg-danger hover:text-white">
-              <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="20" class="fill-current"><title>WhatsApp</title><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-          </a>
-          <span>+62 813 4303 2487</span>
-        </div>
-        <div class="flex items-center justify-center p-4 mb-12">
-          <a href="https://instagram.com/abdmalik1207" target="_blank" class="flex items-center justify-center mr-3 border rounded-full w-9 h-9 border-slate-700 text-slate-700 hover:border-danger hover:bg-danger hover:text-white">
-              <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="20" class="fill-current">
-                <title>Instagram</title>
-                <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/>
-              </svg>
-          </a>
-          <span>abdmalik1207</span>
-        </div>
-        <div class="flex items-center justify-center p-4 mb-12">
-          <a href="https://github.com/abdmalik1207" target="_blank" class="flex items-center justify-center mr-3 border rounded-full w-9 h-9 border-slate-700 text-slate-700 hover:border-danger hover:bg-danger hover:text-white">
-              <svg width="20" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-          </a>
-          <span>abdmalik1207</span>
-        </div>
-        <div class="flex items-center justify-center p-4 mb-12">
-          <a href="https://facebook.com/abdmalik1207" target="_blank" class="flex items-center justify-center mr-3 border rounded-full w-9 h-9 border-slate-700 text-slate-700 hover:border-danger hover:bg-danger hover:text-white">
-              <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="20" class="fill-current"><title>Facebook</title><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-          </a>
-          <span>Abd Malik</span>
-        </div>
-        <div class="flex items-center justify-center p-4 mb-12">
-          <a href="https://linkedin.com/in/abd-malik-291a56243/" target="_blank" class="flex items-center justify-center mr-3 border rounded-full w-9 h-9 border-slate-700 text-slate-700 hover:border-danger hover:bg-danger hover:text-white">
-              <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="20" class="fill-current"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          </a>
-          <span>Abd Malik</span>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- Contact Section End -->
+					<h2 class="mb-5">Experience</h2>
 
-  <!-- Footer Start -->
-  <footer class="pt-10 pb-12 bg-dark">
-    <div class="container">
-      <!-- <div class="flex flex-wrap">
-        <div class="w-full px-4 mb-12 font-medium text-slate-300 md:w-1/3">
-          <h2 class="mb-5 text-4xl font-bold text-white">Pondok IT Al Madinah</h2>
-          <h3 class="mb-2 text-2xl font-bold">Hubungi Kami</h3>
-          <p>abdmalik1207@gmail.com</p>
-          <p>Jl. Ahmad Yani N0. 20</p>
-          <p>Balikpapan</p>
-        </div>
-        <div class="w-full px-4 mb-12 md:w-1/3">
-          <h3 class="mb-5 text-xl font-semibold text-white">Kategori Tulisan</h3>
-          <ul class="text-slate-300">
-            <li>
-              <a href="#" class="inline-block mb-3 text-base hover:text-danger">Programming</a>
-            </li>
-            <li>
-              <a href="#" class="inline-block mb-3 text-base hover:text-danger">Teknologi</a>
-            </li>
-            <li>
-              <a href="#" class="inline-block mb-3 text-base hover:text-danger">Gaya Hidup</a>
-            </li>
-          </ul>
-        </div>
-        <div class="w-full px-4 mb-12 md:w-1/3">
-          <h3 class="mb-5 text-xl font-semibold text-white">Tautan</h3>
-          <ul class="text-slate-300">
-            <li>
-              <a href="#home" class="inline-block mb-3 text-base hover:text-danger">Beranda</a>
-            </li>
-            <li>
-              <a href="#about" class="inline-block mb-3 text-base hover:text-danger">Tentang Saya</a>
-            </li>
-            <li>
-              <a href="#portfolio" class="inline-block mb-3 text-base hover:text-danger">Portfolio</a>
-            </li>
-            <li>
-              <a href="#clients" class="inline-block mb-3 text-base hover:text-danger">Clients</a>
-            </li>
-            <li>
-              <a href="#contact" class="inline-block mb-3 text-base hover:text-danger">Contact</a>
-            </li>
-          </ul>
-        </div>
-      </div> -->
-      <div class="w-full">
-      </div>
-      <p class="text-xs font-medium text-center text-slate-500">
-        Mode with <span class="text-pink-500">&#128151</span> by <a href="https://instagram.com/abdmalik1207" target="_blank" class="font-bold text-danger">Abd Malik</a>, using <a href="https://tailwindcss.com" target="_blank" class="font-bold text-sky-500">Tailwind CSS</a>
-      </p>
-    </div>
-  </footer>
-  <!-- Footer End -->
+					<div class="resume-item mb-4">
+						<span class="date"><span class="icon-calendar"></span> March 2013 - Present</span>
+						<h3>Lead Product Designer</h3>
+						<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+						<span class="school">Github</span>
+					</div>
 
-  <script src="dist/js/script.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+					<div class="resume-item mb-4">
+						<span class="date"><span class="icon-calendar"></span> March 2013 - Present</span>
+						<h3>Lead Product Designer</h3>
+						<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+						<span class="school">Facebook</span>
+					</div>
 
-  <script>
-      $(document).ready(function () {
-          // Open modal
-          $("#openModalBtn").click(function () {
-              $("#myModal").css("display", "block");
-          });
+					<div class="resume-item mb-4">
+						<span class="date"><span class="icon-calendar"></span> March 2013 - Present</span>
+						<h3>Lead Product Designer</h3>
+						<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+						<span class="school">Twitter</span>
+					</div>
 
-          // Close modal
-          $(".close").click(function () {
-              $("#myModal").css("display", "none");
-          });
+					<div class="resume-item mb-4">
+						<span class="date"><span class="icon-calendar"></span> March 2013 - Present</span>
+						<h3>Lead Product Designer</h3>
+						<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+						<span class="school">Shopify</span>
+					</div>
 
-          // Carousel functionality
-          let currentIndex = 0;
-          const images = $(".carousel img");
-          const totalImages = images.length;
 
-          function showImage(index) {
-              images.removeClass("active");
-              images.eq(index).addClass("active");
-          }
+				</div>
+			</div>
+		</div>
+	</section>  -->
 
-          $("#prevBtn").click(function () {
-              currentIndex = (currentIndex > 0) ? currentIndex - 1 : totalImages - 1;
-              showImage(currentIndex);
-          });
+	<section class="site-section" id="section-about">
+		<div class="container">
+			<div class="row mb-5 align-items-center">
+				<div class="col-lg-7 pr-lg-5 mb-5 mb-lg-0">
+					<img src="images/image_1.jpg" alt="Image placeholder" class="img-fluid">
+				</div>
+				<div class="col-lg-5 pl-lg-5">
+					<div class="section-heading">
+						<h2>About <strong>Me</strong></h2>
+					</div>
+					<p class="lead">"I am an alumnus of Pondok Informatika, where I studied web development and graphic design, with a stronger emphasis on web development. Currently, I am pursuing a degree in Informatics at Universitas Siber Muhammadiyah. I have experience in developing several websites and one application."</p>
+					<p>
+						<a href="https://drive.google.com/file/d/1Dv2zeyQwkAQydq8OWgak6lDg1N-JQ4kK/view?usp=sharing" target="_blank" class="btn btn-secondary px-4 py-2 btn-sm">Download CV</a>
+					</p>
+				</div>
+			</div>
 
-          $("#nextBtn").click(function () {
-              currentIndex = (currentIndex < totalImages - 1) ? currentIndex + 1 : 0;
-              showImage(currentIndex);
-          });
 
-          // Close the modal when clicking outside of it
-          window.onclick = function (event) {
-              if (event.target == document.getElementById("myModal")) {
-                  $("#myModal").css("display", "none");
-              }
-          }
-      });
-  </script>
+		</div>
+	</section>
 
-  <script>
-    $(document).ready(function() {
-      var currentSlide = 0;
-      var slides = $(".slide");
+	<section class="site-section" id="section-clients">
+		<div class="container">
+			<div class="row mb-5">
+				<div class="col-md-12">
+					<div class="section-heading text-center">
+						<h2>Clients</h2>
+					</div>
+				</div>
+			</div>
+			<div class="row bg-light align-items-center text-center">
+				<div class="col-6 col-md-2 col-lg-2 my-3">
+					<img src="images/clients/1.png" alt="" class="img-fluid" style="max-width: 120px;">
+				</div>
+				<div class="col-6 col-md-2 col-lg-2 my-3">
+					<img src="images/clients/2.png" alt="" class="img-fluid" style="max-width: 120px;">
+				</div>
+				<div class="col-6 col-md-2 col-lg-2 my-3">
+					<img src="images/clients/3.png" alt="" class="img-fluid" style="max-width: 120px;">
+				</div>
+				<div class="col-6 col-md-2 col-lg-2 my-3">
+					<img src="images/clients/4.png" alt="" class="img-fluid" style="max-width: 70px;">
+				</div>
+				<div class="col-6 col-md-2 col-lg-2 my-3">
+					<img src="images/clients/5.png" alt="" class="img-fluid" style="max-width: 65px;">
+				</div>
+				<div class="col-6 col-md-2 col-lg-2 my-3">
+					<img src="images/clients/6.png" alt="" class="img-fluid" style="max-width: 120px;">
+				</div>
+			</div>
+		</div>
+	</section>
 
-      $("#openModal").click(function() {
-          $("#sliderModal").removeClass("hidden");
-      });
+	<!-- <section class="site-section pb-0"  id="section-services">
+		<div class="container">
 
-      $("#closeModal").click(function() {
-          $("#sliderModal").addClass("hidden");
-      });
+			<div class="row mb-4">
+				<div class="col-md-12">
+					<div class="section-heading text-center">
+						<h2>My <strong>Services</strong></h2>
+					</div>
+				</div>
+			</div>
+			<div class="row">
 
-      $("#nextSlide").click(function() {
-          slides.eq(currentSlide).addClass("hidden");
-          currentSlide = (currentSlide + 1) % slides.length;
-          slides.eq(currentSlide).removeClass("hidden");
-      });
+				<div class="col-md-6 col-lg-4 text-center mb-5">
+					<div class="site-service-item site-animate" data-animate-effect="fadeIn">
+						<span class="icon">
+							<span class="icon-browser2"></span>
+						</span>
+						<h3 class="mb-4">Web Design</h3>
+						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+						<p><a href="#" class="site-link">Learn More <i class="icon-chevron-right"></i></a></p>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-4 text-center mb-5">
+					<div class="site-service-item site-animate" data-animate-effect="fadeIn">
+						<span class="icon">
+							<span class="icon-presentation"></span>
+						</span>
+						<h3 class="mb-4">Search Engine Optimization</h3>
+						<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+						<p><a href="#" class="site-link">Learn More <i class="icon-chevron-right"></i></a></p>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-4 text-center mb-5">
+					<div class="site-service-item site-animate" data-animate-effect="fadeIn">
+						<span class="icon">
+							<span class="icon-video2"></span>
+						</span>
+						<h3 class="mb-4">Video Editing</h3>
+						<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+						<p><a href="#" class="site-link">Learn More <i class="icon-chevron-right"></i></a></p>
+					</div>
+				</div>
 
-      $("#prevSlide").click(function() {
-          slides.eq(currentSlide).addClass("hidden");
-          currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-          slides.eq(currentSlide).removeClass("hidden");
-      });
-  });
-  </script>
 
-</body>
-</html>
+
+			</div>
+		</div>
+	</section> -->
+
+	<!-- <section class="site-section" id="section-blog">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 mb-5">
+					<div class="section-heading text-center">
+						<h2>Blog on <strong>Medium</strong></h2>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-6 col-lg-4 mb-4">
+					<div class="blog-entry">
+						<a href="#"><img src="images/post_1.jpg" alt="Image placeholder" class="img-fluid"></a>
+						<div class="blog-entry-text">
+							<h3><a href="#">Creative Product Designer From Facebook</a></h3>
+							<p class="mb-4">Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+
+							<div class="meta">
+								<a href="#"><span class="icon-calendar"></span> Aug 7, 2018</a>
+								<a href="#"><span class="icon-bubble"></span> 5 Comments</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-6 col-lg-4 mb-4">
+					<div class="blog-entry">
+						<a href="#"><img src="images/post_2.jpg" alt="Image placeholder" class="img-fluid"></a>
+						<div class="blog-entry-text">
+							<h3><a href="#">Creative Product Designer From Facebook</a></h3>
+							<p class="mb-4">Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+
+							<div class="meta">
+								<a href="#"><span class="icon-calendar"></span> Aug 7, 2018</a>
+								<a href="#"><span class="icon-bubble"></span> 5 Comments</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-6 col-lg-4 mb-4">
+					<div class="blog-entry">
+						<a href="#"><img src="images/post_3.jpg" alt="Image placeholder" class="img-fluid"></a>
+						<div class="blog-entry-text">
+							<h3><a href="#">Creative Product Designer From Facebook</a></h3>
+							<p class="mb-4">Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+
+							<div class="meta">
+								<a href="#"><span class="icon-calendar"></span> Aug 7, 2018</a>
+								<a href="#"><span class="icon-bubble"></span> 5 Comments</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section> -->
+
+	<section class="site-section" id="section-contact">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 mb-5">
+					<div class="section-heading text-center">
+						<h2>Get <strong>In Touch</strong></h2>
+					</div>
+				</div>
+
+				<div class="col-md-7 mb-5 mb-md-0 d-flex justify-content-around">
+					<a href="https://web.facebook.com/abdmalik1207?_rdc=1&_rdr" target="_blank" class="h2"><span class="icon-facebook2"></span></a>
+					<a href="https://www.instagram.com/abdmalik1207" target="_blank" class="h2"><span class="icon-instagram2"></span></a>
+					<a href="https://github.com/abdmalik1207" target="_blank" class="h2"><span class="icon-github"></span></a>
+					<a href="https://www.linkedin.com/in/abd-malik-291a56243/" target="_blank" class="h2"><span class="icon-linkedin2"></span></a>
+
+					<!-- <form action="" class="site-form">
+						<h3 class="mb-5">Get In Touch</h3>
+						<div class="form-group">
+							<input type="text" class="form-control px-3 py-4" placeholder="Your Name">
+						</div>
+						<div class="form-group">
+							<input type="email" class="form-control px-3 py-4" placeholder="Your Email">
+						</div>
+						<div class="form-group">
+							<input type="email" class="form-control px-3 py-4" placeholder="Your Phone">
+						</div>
+						<div class="form-group mb-5">
+							<textarea class="form-control px-3 py-4"cols="30" rows="10" placeholder="Write a Message"></textarea>
+						</div>
+						<div class="form-group">
+							<input type="submit" class="btn btn-primary  px-4 py-3" value="Send Message">
+						</div>
+					</form> -->
+				</div>
+
+				<div class="col-md-5 pl-md-5">
+					<h3 class="mb-5">My Contact Details</h3>
+					<ul class="site-contact-details">
+						<li>
+							<span class="text-uppercase">Email</span>
+							abdmalik1207@gmail.com
+						</li>
+						<li>
+							<span class="text-uppercase">Phone</span>
+							+62 813 4303 2487
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<footer class="site-footer">
+		<div class="container">
+
+			<div class="row">
+				<p class="col-12 text-center">
+					Made with <i class="icon-heart text-danger" aria-hidden="true" ></i> by <a href="https://www.instagram.com/abdmalik1207" target="_blank" class="text-primary">Abd Malik</a>
+					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+				</p>
+			</div>
+
+			<!-- <div class="row mb-5">
+				<div class="col-md-12 text-center">
+					<p>
+						<a href="#" class="social-item"><span class="icon-facebook2"></span></a>
+						<a href="#" class="social-item"><span class="icon-twitter"></span></a>
+						<a href="#" class="social-item"><span class="icon-instagram2"></span></a>
+						<a href="#" class="social-item"><span class="icon-linkedin2"></span></a>
+						<a href="#" class="social-item"><span class="icon-vimeo"></span></a>
+					</p>
+				</div>
+			</div> -->
+
+		</div>
+	</footer>
+
+
+
+
+	<script src="js/vendor/jquery.min.js"></script>
+	<script src="js/vendor/jquery-migrate-3.0.1.min.js"></script>
+	<script src="js/vendor/popper.min.js"></script>
+	<script src="js/vendor/bootstrap.min.js"></script>
+
+	<script src="js/vendor/jquery.easing.1.3.js"></script>
+
+	<script src="js/vendor/jquery.stellar.min.js"></script>
+	<script src="js/vendor/jquery.waypoints.min.js"></script>
+
+	<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+	<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+	<script src="js/custom.js"></script>
+
+	<!-- Google Map -->
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    	<script src="js/google-map.js"></script> -->
+
+    </body>
+    </html>
