@@ -149,8 +149,8 @@ a {
   position: relative;
   overflow: hidden; }
   .site-hero, .site-hero .row {
-    height: 100vh;
-    min-height: 800px; }
+    height: 50vh;
+    min-height: 400px; }
   .site-hero:before {
     content: "";
     position: absolute;
@@ -159,16 +159,17 @@ a {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5); }
+    background: rgba(0, 0, 0, 0.3); }
   .site-hero h1 {
     font-weight: 200;
     margin-bottom: 20px;
     display: block; }
     .site-hero h1 strong {
       font-weight: 800; }
-    @media (min-width: 768px) {
+    @media (max-width: 768px) {
       .site-hero h1 {
-        font-size: 70px; } }
+        margin-top: 170px; }
+      }
   .site-hero h1, .site-hero .lead {
     font-weight: 200;
     color: #fff; }
